@@ -81,10 +81,10 @@ class NimWakuStatusCheck(StatusCheck):
              '--address={}'.format(self.address),
              '--timeout={}'.format(self.timeout-1),
              '--log-level={}'.format(self.log_level) ]
-            + ['--protocol=relay'] if self.proto_relay else []
-            + ['--protocol=store'] if self.proto_store else []
-            + ['--protocol=filter'] if self.proto_filter else []
-            + ['--protocol=lightpush'] if self.proto_lightpush else []
+            + (['--protocol=relay'] if self.proto_relay else [])
+            + (['--protocol=store'] if self.proto_store else [])
+            + (['--protocol=filter'] if self.proto_filter else [])
+            + (['--protocol=lightpush'] if self.proto_lightpush else [])
         )
 
         log.info('Checking: %s', self.name)
