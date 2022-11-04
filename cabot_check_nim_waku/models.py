@@ -31,10 +31,10 @@ class NimWakuStatusCheck(StatusCheck):
     icon_class = 'glyphicon-random'
 
     LOG_LEVELS = (
-        ('debug',   'DEBUG'),
-        ('info',    'INFO'),
-        ('warning', 'WARNING'),
-        ('error',   'ERROR'),
+        ('DEBUG',   'DEBUG'),
+        ('INFO',    'INFO'),
+        ('WARNING', 'WARNING'),
+        ('ERROR',   'ERROR'),
     )
 
     log_level = CharField(
