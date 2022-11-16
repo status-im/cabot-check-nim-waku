@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='NimWakuStatusCheck',
             fields=[
-                ('log_level',       TextField(help_text=b'Canary tool logging level.',  default='error')),
+                ('log_level',       TextField(help_text=b'Canary tool logging level.',  default='ERROR')),
                 ('address',         TextField(help_text=b'Waku node multiaddress.',     null=True)),
                 ('proto_relay',     BooleanField(help_text=b'Relay Protocol Check',     default=True)),
                 ('proto_store',     BooleanField(help_text=b'Store Protocol Check',     default=False)),
