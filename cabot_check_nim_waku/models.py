@@ -41,7 +41,7 @@ class NimWakuStatusCheck(StatusCheck):
     log_level = CharField(
         max_length=10,
         choices=LOG_LEVELS,
-        default='error',
+        default='ERROR',
         help_text='Canary tool logging level.'
     )
     address = TextField(help_text='Waku node multiaddress.')
