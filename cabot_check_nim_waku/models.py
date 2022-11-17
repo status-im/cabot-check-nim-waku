@@ -1,6 +1,6 @@
 import subprocess
-from os import path
-from os import environ as env
+from time import time
+from os import path, environ as env
 from celery.utils.log import get_task_logger
 from django.db.models import BooleanField, CharField, TextField
 
@@ -80,6 +80,7 @@ class NimWakuStatusCheck(StatusCheck):
             [ canary_path,
              '--address={}'.format(self.address),
              '--timeout={}'.format(self.timeout-1),
+             '--node-port={}'.format(self._random_port()),
              '--log-level={}'.format(self.log_level) ]
             + (['--protocol=relay'] if self.proto_relay else [])
             + (['--protocol=store'] if self.proto_store else [])
@@ -109,3 +110,7 @@ class NimWakuStatusCheck(StatusCheck):
             raise NimWakuException('Failed: {}'.format(stderr), rval)
 
         return rval
+
+    def _random_port(self):
+        "Not great but functional way to avoid port clashes"
+        return int(time() * (10**7)) % 50000 + 10000
