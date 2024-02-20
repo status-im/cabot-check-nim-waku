@@ -22,6 +22,8 @@ class NimWakuStatusCheckForm(StatusCheckForm):
             'proto_store',
             'proto_filter',
             'proto_lightpush',
+            'wss_cert',
+            'wss_key',
             'timeout',
             'frequency',
             'active',
@@ -37,6 +39,14 @@ class NimWakuStatusCheckForm(StatusCheckForm):
             }),
             'log_level': forms.Select(attrs={
                 'data-rel': 'chosen',
+            }),
+            'wss_cert': forms.TextInput(attrs={
+                'style': 'width: 100%',
+                'placeholder': '/etc/ssl/certs/ssl-cert-snakeoil.pem',
+            }),
+            'wss_key': forms.TextInput(attrs={
+                'style': 'width: 100%',
+                'placeholder': '/etc/ssl/private/ssl-cert-snakeoil.key',
             }),
         })
 

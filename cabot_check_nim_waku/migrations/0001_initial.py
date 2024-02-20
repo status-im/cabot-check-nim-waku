@@ -25,6 +25,8 @@ class Migration(migrations.Migration):
                 ('proto_store',     BooleanField(help_text=b'Store Protocol Check',     default=False)),
                 ('proto_filter',    BooleanField(help_text=b'Filter Protocol Check',    default=False)),
                 ('proto_lightpush', BooleanField(help_text=b'Lightpush Protocol Check', default=False)),
+                ('wss_cert',        TextField(help_text=b'Cert for connecting to WSS port.', null=True)),
+                ('wss_key',         TextField(help_text=b'Cert key for connecting to WSS port.', null=True)),
             ],
             options={
                 'abstract': False,

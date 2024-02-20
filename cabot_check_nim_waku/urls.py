@@ -16,6 +16,8 @@ api_router.register(r'nim_waku_checks', create_viewset(
         'proto_store',
         'proto_filter',
         'proto_lightpush',
+        'wss_cert',
+        'wss_key',
     ),
 ))
 

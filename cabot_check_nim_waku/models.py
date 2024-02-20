@@ -44,11 +44,13 @@ class NimWakuStatusCheck(StatusCheck):
         default='ERROR',
         help_text='Canary tool logging level.'
     )
-    address = TextField(help_text='Waku node multiaddress.')
-    proto_relay = BooleanField(default=True, help_text='Relay Protocol Check')
-    proto_store = BooleanField(default=False, help_text='Store Protocol Check')
-    proto_filter = BooleanField(default=False, help_text='Filter Protocol Check')
+    address         = TextField(help_text='Waku node multiaddress.')
+    proto_relay     = BooleanField(default=True, help_text='Relay Protocol Check')
+    proto_store     = BooleanField(default=False, help_text='Store Protocol Check')
+    proto_filter    = BooleanField(default=False, help_text='Filter Protocol Check')
     proto_lightpush = BooleanField(default=False, help_text='Lightpush Protocol Check')
+    wss_cert        = TextField(blank=True, help_text='Cert for connecting to WSS port.')
+    wss_key         = TextField(blank=True, help_text='Cert key for connecting to WSS port.')
 
     def _run(self):
         result = StatusCheckResult(status_check=self)
@@ -86,6 +88,8 @@ class NimWakuStatusCheck(StatusCheck):
             + (['--protocol=store'] if self.proto_store else [])
             + (['--protocol=filter'] if self.proto_filter else [])
             + (['--protocol=lightpush'] if self.proto_lightpush else [])
+            + (['--websocket-secure-cert-path='+self.wss_cert] if self.wss_cert else [])
+            + (['--websocket-secure-key-path='+self.wss_key] if self.wss_key else [])
         )
 
         log.info('Checking: %s', self.name)
